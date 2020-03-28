@@ -2,10 +2,14 @@
 
 Installed compilers:
 
-- c++ (gcc version 9.2.1)
-- python2 (Python 2.7.17)
-- python3 (Python 3.8.2rc1)
-- nodejs (v10.15.2), npm (5.8.0)
+- Java (openjdk 11.0.6)
+- C++ (gcc version 7.4.0)
+- Python2 (2.7.17)
+- Python3 (3.6.9)
+- NodeJs (v12.16.1), npm (6.13.4)
+- PascalABC.NET (3.6.2)
+- Free Pascal (3.0.4)
+- PHP (7.2.24)
 
 Installed 3rd programs:
 
