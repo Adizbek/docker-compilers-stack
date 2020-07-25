@@ -11,6 +11,7 @@ Installed compilers:
 - Free Pascal (3.0.4)
 - PHP (7.2.24)
 - Golang (1.10.4)
+- Kotlin (1.3.72)
 
 Installed 3rd programs:
 
