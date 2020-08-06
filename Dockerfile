@@ -1,4 +1,4 @@
-FROM ubuntu:bionic-20200403
+FROM ubuntu:bionic-20200723
 
 ARG DEBIAN_FRONTEND=noninteractive
 
