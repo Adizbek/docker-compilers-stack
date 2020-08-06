@@ -2,11 +2,11 @@
 
 Installed compilers:
 
-- Java (openjdk 11.0.6)
-- C++ (gcc version 7.4.0)
+- Java (openjdk 11.0.8)
+- C++ (gcc version 7.5.0)
 - Python2 (2.7.17)
 - Python3 (3.6.9)
-- NodeJs (v12.16.1), npm (6.13.4)
+- NodeJs (v14.7.0), npm (6.14.7)
 - PascalABC.NET (3.6.2)
 - Free Pascal (3.0.4)
 - PHP (7.2.24)
