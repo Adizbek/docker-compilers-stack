@@ -2,16 +2,18 @@
 
 Installed compilers:
 
-- Java (openjdk 11.0.8)
-- C++ (gcc version 7.5.0)
-- Python2 (2.7.17)
-- Python3 (3.6.9)
-- NodeJs (v14.7.0), npm (6.14.7)
-- PascalABC.NET (3.6.2)
-- Free Pascal (3.0.4)
-- PHP (7.2.24)
-- Golang (1.10.4)
-- Kotlin (1.3.72)
+- Java openjdk 11.0.10
+- C++ gcc version 9.3.0
+- Python2 2.7.18
+- Python3 3.8.5
+- NodeJs v14.16.1, npm 6.14.12
+- PascalABC.NET 3.6.2
+- Free Pascal 3.0.4
+- PHP 7.4.3
+- Golang 1.13.8
+- Kotlin 1.3.72
+- Swift  5.3.3
+- Ruby 2.7.0
 
 Installed 3rd programs:
 
