@@ -5,6 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+      - name: Configure git-lfs to ignore most files
+        run: |
+          git config --global lfs.fetchinclude 'compilers/**'
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
