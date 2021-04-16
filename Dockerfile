@@ -22,7 +22,7 @@ RUN cd /usr/lib && \
 ENV PATH $PATH:/usr/lib/kotlinc/bin
 
 # install PascalABC.NET
-ADD compilers/PABCNETC.zip /opt/PABCNETC
+ADD compilers/PABCNETC.tar.gz /opt/
 ADD compilers/swift-5.3.3-RELEASE-ubuntu20.04.tar.gz /usr/lib
 
 ENV PATH $PATH:/usr/lib/swift-5.3.3-RELEASE-ubuntu20.04/usr/bin
