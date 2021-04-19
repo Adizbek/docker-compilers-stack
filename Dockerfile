@@ -18,14 +18,16 @@ RUN apt-get update && \
     source "$SDKMAN_DIR/bin/sdkman-init.sh" && \
     sdk install java 8.0.282.hs-adpt && ln -s $SDKMAN_DIR/candidates/java/8.0.282.hs-adpt/bin/ /opt/java8 && \
     sdk install java 11.0.10.hs-adpt && ln -s $SDKMAN_DIR/candidates/java/11.0.10.hs-adpt/bin/ /opt/java11 && \
-    sdk install kotlin 1.4.31 && ln -s $SDKMAN_DIR/candidates/kotlin/1.4.31/bin/ /opt/kotlin1.4 && \
+    sdk install kotlin 1.3.72 && ln -s $SDKMAN_DIR/candidates/kotlin/1.3.72/bin/ /opt/kotlin && \
     sdk flush
 
 
 # install PascalABC.NET
-ADD https://robocontest.uz/dist/PABCNETC.tar.gz /opt/
+RUN (cd /opt && wget https://robocontest.uz/dist/PABCNETC.tar.gz && tar -xzf PABCNETC.tar.gz && rm PABCNETC.tar.gz)
 # install swift
-ADD https://swift.org/builds/swift-5.3.3-release/ubuntu2004/swift-5.3.3-RELEASE/swift-5.3.3-RELEASE-ubuntu20.04.tar.gz /usr/lib
+RUN (cd /opt && wget https://swift.org/builds/swift-5.3.3-release/ubuntu2004/swift-5.3.3-RELEASE/swift-5.3.3-RELEASE-ubuntu20.04.tar.gz && \
+     tar -xzf swift-5.3.3-RELEASE-ubuntu20.04.tar.gz && \
+     rm swift-5.3.3-RELEASE-ubuntu20.04.tar.gz)
 
 RUN apt-get update && \
  sh -c 'wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -' && \
