@@ -2,8 +2,7 @@ FROM ubuntu:focal-20201008
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-    apt-get install -y curl unzip zip wget default-jdk-headless g++ python python3 fp-compiler mono-complete apt-transport-https \
-    #swift
+    apt-get install -y curl unzip zip wget g++ python python3 fp-compiler mono-complete apt-transport-https \
     binutils git gnupg2 libc6-dev libcurl4 libedit2 libgcc-9-dev libpython2.7 libsqlite3-0 libstdc++-9-dev libxml2 libz3-dev pkg-config tzdata zlib1g-dev \
     time nano htop mc php7.4-cli php7.4-bcmath php7.4-mbstring php7.4-intl php7.4-json \
     golang \
@@ -14,6 +13,11 @@ RUN apt-get update && \
     apt-get clean && \
     apt-get autoclean && rm -rf /var/lib/apt/lists/*
 
+RUN curl -s "https://get.sdkman.io" | bash && source "$HOME/.sdkman/bin/sdkman-init.sh" && \
+    mkdir /opt/java8 && sdk install java 8.0.282.hs-adpt /opt/java8 && \
+    mkdir /opt/java11 && sdk install java 11.0.10.hs-adpt /opt/java11 && \
+    sdk flush
+
 RUN cd /usr/lib && \
     wget -q 'https://github.com/JetBrains/kotlin/releases/download/v1.3.72/kotlin-compiler-1.3.72.zip' && \
     unzip kotlin-compiler-*.zip && \
@@ -23,7 +27,8 @@ RUN cd /usr/lib && \
 ENV PATH $PATH:/usr/lib/kotlinc/bin
 
 # install PascalABC.NET
-ADD http://pascalabc.net/downloads/PABCNETC.zip /opt/
+ADD https://robocontest.uz/dist/PABCNETC.tar.gz /opt/
+# install swift
 ADD https://swift.org/builds/swift-5.3.3-release/ubuntu2004/swift-5.3.3-RELEASE/swift-5.3.3-RELEASE-ubuntu20.04.tar.gz /usr/lib
 
 RUN apt-get update && \
