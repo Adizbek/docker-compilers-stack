@@ -9,10 +9,6 @@ RUN apt-get update && \
     golang \
     ruby-full && \
     # install dart
-    sh -c 'wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -' && \
-    sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list' && \
-    apt-get update && \
-    apt-get install dart && \
     curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     apt-get install -y nodejs && \
     apt-get clean && \
@@ -29,6 +25,14 @@ ENV PATH $PATH:/usr/lib/kotlinc/bin
 # install PascalABC.NET
 ADD compilers/PABCNETC.tar.gz /opt/
 ADD compilers/swift-5.3.3-RELEASE-ubuntu20.04.tar.gz /usr/lib
+
+RUN apt-get update && \
+ sh -c 'wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -' && \
+ sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list' && \
+ apt-get update && \
+ apt-get install dart && \
+ apt-get clean && \
+ apt-get autoclean && rm -rf /var/lib/apt/lists/*
 
 ENV PATH $PATH:/usr/lib/swift-5.3.3-RELEASE-ubuntu20.04/usr/bin
 
