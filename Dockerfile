@@ -31,8 +31,9 @@ RUN apt-get update && \
  apt-get clean && \
  apt-get autoclean && rm -rf /var/lib/apt/lists/*
 
-RUN export SDKMAN_DIR=/usr/local/sdkman && curl -s "https://get.sdkman.io" | bash
-RUN source "$SDKMAN_DIR/bin/sdkman-init.sh"
+ENV SDKMAN_DIR /usr/local/sdkman
+RUN curl -s "https://get.sdkman.io" | bash
+RUN source $SDKMAN_DIR/bin/sdkman-init.sh
 
 RUN sdk install java 8.0.282.hs-adpt && ln -s $SDKMAN_DIR/candidates/java/8.0.282.hs-adpt/bin/ /opt/java8 && \
     sdk install java 11.0.10.hs-adpt && ln -s $SDKMAN_DIR/candidates/java/11.0.10.hs-adpt/bin/ /opt/java11 && \
