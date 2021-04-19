@@ -16,15 +16,9 @@ RUN apt-get update && \
 RUN curl -s "https://get.sdkman.io" | bash && /bin/bash -c "source $HOME/.sdkman/bin/sdkman-init.sh" && \
     mkdir /opt/java8 && sdk install java 8.0.282.hs-adpt /opt/java8 && \
     mkdir /opt/java11 && sdk install java 11.0.10.hs-adpt /opt/java11 && \
+    mkdir /opt/kotlin1.4 && sdk install kotlin 1.4.31 /opt/kotlin1.4 && \
     sdk flush
 
-RUN cd /usr/lib && \
-    wget -q 'https://github.com/JetBrains/kotlin/releases/download/v1.3.72/kotlin-compiler-1.3.72.zip' && \
-    unzip kotlin-compiler-*.zip && \
-    rm kotlin-compiler-*.zip && \
-    rm -f kotlinc/bin/*.bat
-
-ENV PATH $PATH:/usr/lib/kotlinc/bin
 
 # install PascalABC.NET
 ADD https://robocontest.uz/dist/PABCNETC.tar.gz /opt/
