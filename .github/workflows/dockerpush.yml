@@ -7,14 +7,14 @@ jobs:
       - name: Configure git-lfs to ignore most files
         run: |
           git config --global lfs.fetchinclude 'compilers/**'
-          
+
       - uses: actions/checkout@v1
         with:
           fetch-depth: 1
-      - name: Get git-lfs files
-        run: |
-          git -c http.https://github.com.extraheader="AUTHORIZATION: basic ${{ secrets.GITHUB_TOKEN }}" lfs pull --include compilers/
-          git -c http.https://github.com.extraheader="AUTHORIZATION: basic $GITHUB_TOKEN" lfs checkout compilers/
+#      - name: Get git-lfs files
+#        run: |
+#          git -c http.https://github.com.extraheader="AUTHORIZATION: basic ${{ secrets.GITHUB_TOKEN }}" lfs pull --include compilers/
+#          git -c http.https://github.com.extraheader="AUTHORIZATION: basic $GITHUB_TOKEN" lfs checkout compilers/
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
