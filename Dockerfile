@@ -14,11 +14,11 @@ RUN apt-get update && \
     apt-get clean && \
     apt-get autoclean && rm -rf /var/lib/apt/lists/*
 
-RUN curl -s "https://get.sdkman.io" | bash && \
-    source /root/.sdkman/bin/sdkman-init.sh && \
-    mkdir /opt/java8 && sdk install java 8.0.282.hs-adpt /opt/java8 && \
-    mkdir /opt/java11 && sdk install java 11.0.10.hs-adpt /opt/java11 && \
-    mkdir /opt/kotlin1.4 && sdk install kotlin 1.4.31 /opt/kotlin1.4 && \
+RUN export SDKMAN_DIR="/usr/local/sdkman" && curl -s "https://get.sdkman.io" | bash && \
+    source /usr/local/sdkman/bin/sdkman-init.sh && \
+    sdk install java 8.0.282.hs-adpt && ln -s /usr/local/sdkman/candidates/java/8.0.282.hs-adpt/bin/ /opt/java8 && \
+    sdk install java 11.0.10.hs-adpt && ln -s /usr/local/sdkman/candidates/java/11.0.10.hs-adpt/bin/ /opt/java11 && \
+    sdk install kotlin 1.4.31 && ln -s /usr/local/sdkman/candidates/kotlin/1.4.31/bin/ /opt/kotlin1.4 && \
     sdk flush
 
 
