@@ -12,9 +12,9 @@ RUN apt-get update && \
     curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     apt-get install -y nodejs && \
     apt-get clean && \
-    apt-get autoclean && rm -rf /var/lib/apt/lists/*
+    apt-get autoclean && rm -rf /var/lib/apt/lists/* && \
 
-RUN export SDKMAN_DIR="/usr/local/sdkman" && curl -s "https://get.sdkman.io" | bash && \
+    export SDKMAN_DIR="/usr/local/sdkman" && curl -s "https://get.sdkman.io" | bash && \
     source "$SDKMAN_DIR/bin/sdkman-init.sh" && \
     sdk install java 8.0.282.hs-adpt && ln -s $SDKMAN_DIR/candidates/java/8.0.282.hs-adpt/bin/ /opt/java8 && \
     sdk install java 11.0.10.hs-adpt && ln -s $SDKMAN_DIR/candidates/java/11.0.10.hs-adpt/bin/ /opt/java11 && \
