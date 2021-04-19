@@ -1,5 +1,6 @@
 FROM ubuntu:focal-20201008
 ARG DEBIAN_FRONTEND=noninteractive
+SHELL ["/bin/bash", "-c"]
 
 RUN apt-get update && \
     apt-get install -y curl unzip zip wget g++ python python3 fp-compiler mono-complete apt-transport-https \
@@ -14,7 +15,7 @@ RUN apt-get update && \
     apt-get autoclean && rm -rf /var/lib/apt/lists/*
 
 RUN curl -s "https://get.sdkman.io" | bash && \
-    /bin/bash -c "source /root/.sdkman/bin/sdkman-init.sh" && \
+    source /root/.sdkman/bin/sdkman-init.sh && \
     mkdir /opt/java8 && sdk install java 8.0.282.hs-adpt /opt/java8 && \
     mkdir /opt/java11 && sdk install java 11.0.10.hs-adpt /opt/java11 && \
     mkdir /opt/kotlin1.4 && sdk install kotlin 1.4.31 /opt/kotlin1.4 && \
