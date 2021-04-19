@@ -23,8 +23,8 @@ RUN cd /usr/lib && \
 ENV PATH $PATH:/usr/lib/kotlinc/bin
 
 # install PascalABC.NET
-ADD compilers/PABCNETC.tar.gz /opt/
-ADD compilers/swift-5.3.3-RELEASE-ubuntu20.04.tar.gz /usr/lib
+ADD http://pascalabc.net/downloads/PABCNETC.zip /opt/
+ADD https://swift.org/builds/swift-5.3.3-release/ubuntu2004/swift-5.3.3-RELEASE/swift-5.3.3-RELEASE-ubuntu20.04.tar.gz /usr/lib
 
 RUN apt-get update && \
  sh -c 'wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -' && \
