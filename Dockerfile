@@ -30,7 +30,7 @@ RUN apt-get update && \
 
 
 # install PascalABC.NET
-RUN (cd /opt && wget https://robocontest.uz/dist/PABCNETC.tar.gz && tar -xzf PABCNETC.tar.gz && rm PABCNETC.tar.gz) &&
+RUN (cd /opt && wget https://robocontest.uz/dist/PABCNETC.tar.gz && tar -xzf PABCNETC.tar.gz && rm PABCNETC.tar.gz) && \
      echo "alias pabcnetcclear='mono /opt/PABCNETC/pabcnetcclear.exe'" >> /etc/bash.bashrc
 # install swift
 RUN (cd /opt && wget https://swift.org/builds/swift-5.3.3-release/ubuntu2004/swift-5.3.3-RELEASE/swift-5.3.3-RELEASE-ubuntu20.04.tar.gz && \
