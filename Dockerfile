@@ -33,9 +33,9 @@ RUN apt-get update && \
 
 ENV SDKMAN_DIR /usr/local/sdkman
 RUN curl -s "https://get.sdkman.io" | bash
-RUN source $SDKMAN_DIR/bin/sdkman-init.sh
 
-RUN sdk install java 8.0.282.hs-adpt && ln -s $SDKMAN_DIR/candidates/java/8.0.282.hs-adpt/bin/ /opt/java8 && \
+RUN source $SDKMAN_DIR/bin/sdkman-init.sh && \
+    sdk install java 8.0.282.hs-adpt && ln -s $SDKMAN_DIR/candidates/java/8.0.282.hs-adpt/bin/ /opt/java8 && \
     sdk install java 11.0.10.hs-adpt && ln -s $SDKMAN_DIR/candidates/java/11.0.10.hs-adpt/bin/ /opt/java11 && \
     sdk install kotlin 1.3.72 && ln -s $SDKMAN_DIR/candidates/kotlin/1.3.72/bin/ /opt/kotlin && \
     sdk flush
