@@ -2,6 +2,7 @@ FROM ubuntu:focal-20201008
 ARG DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash", "-c"]
 
+
 RUN apt-get update && \
     apt-get install -y curl unzip zip wget g++ python python3 fp-compiler mono-complete apt-transport-https \
     binutils git gnupg2 libc6-dev libcurl4 libedit2 libgcc-9-dev libpython2.7 libsqlite3-0 libstdc++-9-dev libxml2 libz3-dev pkg-config tzdata zlib1g-dev \
@@ -9,13 +10,16 @@ RUN apt-get update && \
     ruby-full && \
     curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
     apt-get install -y nodejs && \
-    (cd /tmp && wget https://dl.google.com/go/go1.16.4.linux-amd64.tar.gz && tar -xvf go1.16.4.linux-amd64.tar.gz && mv go /usr/local && rm -rf /tmp) && \
     apt-get clean && \
     apt-get autoclean && rm -rf /var/lib/apt/lists/*
 
 # install PascalABC.NET
 RUN (cd /opt && wget https://robocontest.uz/dist/PABCNETC.tar.gz && tar -xzf PABCNETC.tar.gz && rm PABCNETC.tar.gz) && \
      echo "alias pabcnetcclear='mono /opt/PABCNETC/pabcnetcclear.exe'" >> /etc/bash.bashrc
+     
+RUN (cd /opt && wget https://dl.google.com/go/go1.16.4.linux-amd64.tar.gz && tar -xvf go1.16.4.linux-amd64.tar.gz && mv go /usr/local && rm /opt/go1.16.4.linux-amd64.tar.gz)
+
+ENV GOROOT /usr/local/go 
 
 # install swift
 RUN (cd /opt && wget https://swift.org/builds/swift-5.3.3-release/ubuntu2004/swift-5.3.3-RELEASE/swift-5.3.3-RELEASE-ubuntu20.04.tar.gz && \
@@ -40,4 +44,4 @@ RUN source $SDKMAN_DIR/bin/sdkman-init.sh && \
     sdk install kotlin 1.3.72 && ln -s $SDKMAN_DIR/candidates/kotlin/1.3.72/bin/ /opt/kotlin && \
     sdk flush
 
-ENV PATH $PATH:/opt/swift-5.3.3-RELEASE-ubuntu20.04/usr/bin
+ENV PATH $PATH:/opt/swift-5.3.3-RELEASE-ubuntu20.04/usr/bin:$GOROOT/bin
