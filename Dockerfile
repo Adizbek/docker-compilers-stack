@@ -2,8 +2,7 @@ FROM ubuntu:focal-20201008
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && \
-    apt-get install -y curl unzip zip wget default-jdk-headless g++ python python3 fp-compiler mono-complete \
-    #swift
+    apt-get install -y curl unzip zip wget apt-transport-https g++ python python3 fp-compiler mono-complete \
     binutils git gnupg2 libc6-dev libcurl4 libedit2 libgcc-9-dev libpython2.7 libsqlite3-0 libstdc++-9-dev libxml2 libz3-dev pkg-config tzdata zlib1g-dev \
     time nano htop mc php7.4-cli php7.4-bcmath php7.4-mbstring php7.4-intl php7.4-json \
     ruby-full && \
@@ -12,7 +11,7 @@ RUN apt-get update && \
     apt-get clean && \
     apt-get autoclean && rm -rf /var/lib/apt/lists/*
 
-# install PascalABC.NET
+# install PascalABC.NET, dist from robocontest.uz site.
 RUN (cd /opt && wget https://robocontest.uz/dist/PABCNETC.tar.gz && tar -xzf PABCNETC.tar.gz && rm PABCNETC.tar.gz) && \
      echo "alias pabcnetcclear='mono /opt/PABCNETC/pabcnetcclear.exe'" >> /etc/bash.bashrc
 
@@ -28,12 +27,22 @@ RUN apt-get update && \
  apt-get clean && \
  apt-get autoclean && rm -rf /var/lib/apt/lists/*
 
-RUN cd /usr/lib && \
-    wget -q 'https://github.com/JetBrains/kotlin/releases/download/v1.3.72/kotlin-compiler-1.3.72.zip' && \
-    unzip kotlin-compiler-*.zip && \
-    rm kotlin-compiler-*.zip && \
-    rm -f kotlinc/bin/*.bat
+SHELL ["/bin/bash", "-c"]
+
+ENV SDKMAN_DIR /usr/local/sdkman
+RUN curl -s "https://get.sdkman.io" | bash
+
+RUN source $SDKMAN_DIR/bin/sdkman-init.sh && sdk install java 8.0.282.hs-adpt && ln -s $SDKMAN_DIR/candidates/java/8.0.282.hs-adpt/bin/ /opt/java8 && \
+    sdk install java 11.0.11.hs-adpt && ln -s $SDKMAN_DIR/candidates/java/11.0.11.hs-adpt/bin/ /opt/java11 && \
+    sdk install kotlin 1.3.72 && ln -s $SDKMAN_DIR/candidates/kotlin/1.3.72/bin/ /opt/kotlin && \
+    sdk flush
+
+# install swift
+RUN (cd /opt && wget https://swift.org/builds/swift-5.3.3-release/ubuntu2004/swift-5.3.3-RELEASE/swift-5.3.3-RELEASE-ubuntu20.04.tar.gz && \
+     tar -xzf swift-5.3.3-RELEASE-ubuntu20.04.tar.gz && \
+     rm swift-5.3.3-RELEASE-ubuntu20.04.tar.gz)
+
+RUN echo "alias java8='/opt/java8/java'" >> /etc/bash.bashrc
 
 ENV GOROOT /usr/local/go
-ENV PATH $PATH:/usr/lib/kotlinc/bin
-ENV PATH $PATH:/usr/lib/swift-5.3.3-RELEASE-ubuntu20.04/usr/bin:$GOROOT/bin
+ENV PATH $PATH:/opt/swift-5.3.3-RELEASE-ubuntu20.04/usr/bin:/opt/kotlin:$GOROOT/bin
