@@ -14,6 +14,8 @@ Installed compilers:
 - Kotlin 1.3.72
 - Swift  5.3.3
 - Ruby 2.7.0
+- Dotnet 6.0.100-rc.2.21505.57
+
 
 Installed 3rd programs:
 

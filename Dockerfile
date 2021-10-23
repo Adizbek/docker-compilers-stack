@@ -45,7 +45,7 @@ RUN (cd /opt && wget https://swift.org/builds/swift-5.3.3-release/ubuntu2004/swi
 RUN echo "alias java8='/opt/java8/java'" >> /etc/bash.bashrc
 
 COPY --from=registry.gitlab.com/adizbek/dotnet-6-docker-image /opt/dotnet6 /opt/dotnet6
-ENV DOTNET_HOME /opt/dotnet6
 
+ENV DOTNET_ROOT /opt/dotnet6
 ENV GOROOT /usr/local/go
 ENV PATH $PATH:/opt/swift-5.3.3-RELEASE-ubuntu20.04/usr/bin:/opt/kotlin:$GOROOT/bin:$DOTNET_HOME
