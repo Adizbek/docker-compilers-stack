@@ -48,4 +48,4 @@ COPY --from=registry.gitlab.com/adizbek/dotnet-6-docker-image /opt/dotnet6 /opt/
 
 ENV DOTNET_ROOT /opt/dotnet6
 ENV GOROOT /usr/local/go
-ENV PATH $PATH:/opt/swift-5.3.3-RELEASE-ubuntu20.04/usr/bin:/opt/kotlin:$GOROOT/bin:$DOTNET_HOME
+ENV PATH $PATH:/opt/swift-5.3.3-RELEASE-ubuntu20.04/usr/bin:/opt/kotlin:$GOROOT/bin:$DOTNET_ROOT
