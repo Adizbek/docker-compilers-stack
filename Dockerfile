@@ -16,7 +16,7 @@ RUN (cd /opt && wget https://robocontest.uz/dist/PABCNETC.tar.gz && tar -xzf PAB
      echo "alias pabcnetcclear='mono /opt/PABCNETC/pabcnetcclear.exe'" >> /etc/bash.bashrc
 
 # install golang
-RUN (cd /opt && wget https://dl.google.com/go/go1.16.4.linux-amd64.tar.gz && tar -xvf go1.16.4.linux-amd64.tar.gz && mv go /usr/local && rm /opt/go1.16.4.linux-amd64.tar.gz)
+RUN (cd /opt && wget https://dl.google.com/go/go1.18.3.linux-amd64.tar.gz && tar -xvf go1.18.3.linux-amd64.tar.gz && mv go /usr/local && rm /opt/go1.18.3.linux-amd64.tar.gz)
 
 # install dart
 RUN apt-get update && \
@@ -33,6 +33,7 @@ ENV SDKMAN_DIR /usr/local/sdkman
 RUN curl -s "https://get.sdkman.io" | bash
 
 RUN source $SDKMAN_DIR/bin/sdkman-init.sh && sdk install java 8.0.282.hs-adpt && ln -s $SDKMAN_DIR/candidates/java/8.0.282.hs-adpt/bin/ /opt/java8 && \
+    sdk install java 17.0.3-tem && ln -s $SDKMAN_DIR/candidates/java/17.0.3-tem/bin/ /opt/java17 && \
     sdk install java 11.0.11.hs-adpt && ln -s $SDKMAN_DIR/candidates/java/11.0.11.hs-adpt/bin/ /opt/java11 && \
     sdk install kotlin 1.3.72 && ln -s $SDKMAN_DIR/candidates/kotlin/1.3.72/bin/ /opt/kotlin && \
     sdk flush
