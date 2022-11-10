@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker build -t adizbek/ubuntu-compilers:latest .
+docker build --platform linux/amd64 -t adizbek/ubuntu-compilers:latest .
