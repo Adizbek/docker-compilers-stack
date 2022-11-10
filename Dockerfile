@@ -48,7 +48,7 @@ RUN echo "alias java8='/opt/java8/java'" >> /etc/bash.bashrc
 COPY --from=adizbek/compiler-dotnet6 /opt/dotnet6 /opt/dotnet6
 
 RUN (cd /opt && wget https://downloads.python.org/pypy/pypy3.9-v7.3.9-linux64.tar.bz2 && \
-    tar -xzf pypy3.9-v7.3.9-linux64.tar.bz2 && \
+    tar -xvf pypy3.9-v7.3.9-linux64.tar.bz2 && \
          rm pypy3.9-v7.3.9-linux64.tar.bz2)
 
 ENV DOTNET_ROOT /opt/dotnet6
