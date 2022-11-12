@@ -1,7 +1,7 @@
 FROM ubuntu:focal-20221019
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt upgrade -y \
+RUN apt-get update && apt upgrade -y && \
     apt-get install -y iptables curl unzip zip wget apt-transport-https g++ python python3 fp-compiler mono-complete \
     binutils git gnupg2 libc6-dev libcurl4 libedit2 libgcc-9-dev libpython2.7 libsqlite3-0 libstdc++-9-dev libxml2 libz3-dev pkg-config tzdata zlib1g-dev \
     time nano htop mc php7.4-cli php7.4-bcmath php7.4-mbstring php7.4-intl php7.4-json \
