@@ -4,19 +4,21 @@ Installed compilers:
 
 - Java 8 openjdk 1.8.0.282
 - Java 11 openjdk 11.0.11
-- Java 17 openjdk 17.0.3
+- Java 20 openjdk 20
+- Kotlin 1.8.20
 - C++ gcc version 9.4.0
 - Python2 2.7.18
 - Python3 3.8.10
-- NodeJs v16.16.0, npm 8.13.2
+- NodeJs v16.19.1, npm 8.19.3
 - PascalABC.NET 3.6.2
 - Free Pascal 3.0.4
 - PHP 7.4.3
-- Golang 1.18.3
-- Kotlin 1.3.72
-- Swift  5.3.3
+- Golang 1.20.3
+- Swift 5.8
 - Ruby 2.7.0
-- Dotnet 6.0.100-rc.2.21505.57
+- Dotnet 6.0.403
+- Dart 2.19.6
+- PyPy 7.3.9 (python 3.9.12)
 
 
 Installed 3rd programs:

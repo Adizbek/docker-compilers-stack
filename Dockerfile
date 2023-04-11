@@ -16,7 +16,7 @@ RUN (cd /opt && wget https://robocontest.uz/dist/PABCNETC.tar.gz && tar -xzf PAB
      echo "alias pabcnetcclear='mono /opt/PABCNETC/pabcnetcclear.exe'" >> /etc/bash.bashrc
 
 # install golang
-RUN (cd /opt && wget https://dl.google.com/go/go1.18.3.linux-amd64.tar.gz && tar -xvf go1.18.3.linux-amd64.tar.gz && mv go /usr/local && rm /opt/go1.18.3.linux-amd64.tar.gz)
+RUN (cd /opt && wget https://dl.google.com/go/go1.20.3.linux-amd64.tar.gz && tar -xvf go1.20.3.linux-amd64.tar.gz && mv go /usr/local && rm /opt/go1.20.3.linux-amd64.tar.gz)
 
 # install dart
 RUN apt-get update && \
@@ -33,15 +33,15 @@ ENV SDKMAN_DIR /usr/local/sdkman
 RUN curl -s "https://get.sdkman.io" | bash
 
 RUN source $SDKMAN_DIR/bin/sdkman-init.sh && sdk install java 8.0.282.hs-adpt && ln -s $SDKMAN_DIR/candidates/java/8.0.282.hs-adpt/bin/ /opt/java8 && \
-    sdk install java 17.0.3-tem && ln -s $SDKMAN_DIR/candidates/java/17.0.3-tem/bin/ /opt/java17 && \
+    sdk install java 20-tem && ln -s $SDKMAN_DIR/candidates/java/20-tem/bin/ /opt/java20 && \
     sdk install java 11.0.11.hs-adpt && ln -s $SDKMAN_DIR/candidates/java/11.0.11.hs-adpt/bin/ /opt/java11 && \
-    sdk install kotlin 1.3.72 && ln -s $SDKMAN_DIR/candidates/kotlin/1.3.72/bin/ /opt/kotlin && \
+    sdk install kotlin 1.8.20 && ln -s $SDKMAN_DIR/candidates/kotlin/1.8.20/bin/ /opt/kotlin && \
     sdk flush
 
 # install swift
-RUN (cd /opt && wget https://swift.org/builds/swift-5.3.3-release/ubuntu2004/swift-5.3.3-RELEASE/swift-5.3.3-RELEASE-ubuntu20.04.tar.gz && \
-     tar -xzf swift-5.3.3-RELEASE-ubuntu20.04.tar.gz && \
-     rm swift-5.3.3-RELEASE-ubuntu20.04.tar.gz)
+RUN (cd /opt && wget https://download.swift.org/swift-5.8-release/ubuntu2004/swift-5.8-RELEASE/swift-5.8-RELEASE-ubuntu20.04.tar.gz && \
+     tar -xzf swift-5.8-RELEASE-ubuntu20.04.tar.gz && \
+     rm swift-5.8-RELEASE-ubuntu20.04.tar.gz)
 
 RUN echo "alias java8='/opt/java8/java'" >> /etc/bash.bashrc
 
@@ -53,4 +53,4 @@ RUN (cd /opt && wget https://downloads.python.org/pypy/pypy3.9-v7.3.9-linux64.ta
 
 ENV DOTNET_ROOT /opt/dotnet6
 ENV GOROOT /usr/local/go
-ENV PATH $PATH:/opt/pypy3.9-v7.3.9-linux64/bin:/opt/swift-5.3.3-RELEASE-ubuntu20.04/usr/bin:/opt/kotlin:$GOROOT/bin:$DOTNET_ROOT
+ENV PATH $PATH:/opt/pypy3.9-v7.3.9-linux64/bin:/opt/swift-5.8-RELEASE-ubuntu20.04/usr/bin:/opt/kotlin:$GOROOT/bin:$DOTNET_ROOT
