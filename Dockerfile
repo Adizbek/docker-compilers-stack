@@ -51,6 +51,8 @@ RUN (cd /opt && wget https://downloads.python.org/pypy/pypy3.9-v7.3.9-linux64.ta
     tar -xvf pypy3.9-v7.3.9-linux64.tar.bz2 && \
          rm pypy3.9-v7.3.9-linux64.tar.bz2)
 
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
+
 ENV DOTNET_ROOT /opt/dotnet6
 ENV GOROOT /usr/local/go
 ENV PATH $PATH:/opt/pypy3.9-v7.3.9-linux64/bin:/opt/swift-5.8-RELEASE-ubuntu20.04/usr/bin:/opt/kotlin:$GOROOT/bin:$DOTNET_ROOT

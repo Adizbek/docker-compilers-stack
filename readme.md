@@ -19,7 +19,7 @@ Installed compilers:
 - Dotnet 6.0.403
 - Dart 2.19.6
 - PyPy 7.3.9 (python 3.9.12)
-
+- Rust (1.70.0)
 
 Installed 3rd programs:
 
