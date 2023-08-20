@@ -52,7 +52,7 @@ COPY --from=adizbek/compiler-dotnet:7.0 /opt/dotnet7 /opt/dotnet7
 COPY --from=adizbek/compiler-sdkman:1.1 /opt /opt
 
 # includes pypy 3.10, python 3.11, python 2.7, graalpy 23 (python 3.10)
-COPY --from=adizbek/compiler-python:1.0 /opt/pyenv/versions /opt/python
+COPY --from=adizbek/compiler-python:1.0 /opt/pyenv/versions /opt/pyenv/versions
 
 ENV DOTNET_ROOT /opt/dotnet7
 ENV GOROOT /usr/local/go
