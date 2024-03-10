@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
 # ask for version
 echo "Enter version for image: (e.g. 7.0)"

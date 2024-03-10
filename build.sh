@@ -1,3 +1,7 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash
 
-docker build --platform linux/amd64 -t adizbek/ubuntu-compilers:latest .
+# ask for version
+echo "Enter version for image: (e.g. 7.0)"
+read version
+
+docker build --platform linux/amd64 -t adizbek/ubuntu-compilers:latest -t adizbek/ubuntu-compilers:$version .

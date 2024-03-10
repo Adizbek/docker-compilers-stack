@@ -1,11 +1,11 @@
-FROM ubuntu:focal-20230801
+FROM ubuntu:focal-20240216
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && apt install -y libicu66 libssl-dev wget
 
 SHELL ["/bin/bash", "-c"]
 
-# install dotnet 7
-RUN (mkdir /opt/dotnet7 && cd /opt/dotnet7 && \
-  wget https://download.visualstudio.microsoft.com/download/pr/dbfe6cc7-dd82-4cec-b267-31ed988b1652/c60ab4793c3714be878abcb9aa834b63/dotnet-sdk-7.0.400-linux-x64.tar.gz && tar -xvf dotnet-sdk-7.0.400-linux-x64.tar.gz && \
-  rm dotnet-sdk-7.0.400-linux-x64.tar.gz)
+# install dotnet 8
+RUN (mkdir /opt/dotnet8 && cd /opt/dotnet8 && \
+  wget https://download.visualstudio.microsoft.com/download/pr/85bcc525-4e9c-471e-9c1d-96259aa1a315/930833ef34f66fe9ee2643b0ba21621a/dotnet-sdk-8.0.201-linux-x64.tar.gz && tar -xvf dotnet-sdk-8.0.201-linux-x64.tar.gz && \
+  rm dotnet-sdk-8.0.201-linux-x64.tar.gz)

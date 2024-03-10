@@ -1,4 +1,5 @@
-FROM ubuntu:focal-20230801
+FROM ubuntu:focal-20240216
+
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt upgrade -y && \
@@ -46,14 +47,14 @@ RUN (cd /opt && wget https://download.swift.org/swift-5.8-release/ubuntu2004/swi
      tar -xzf swift-5.8-RELEASE-ubuntu20.04.tar.gz && \
      rm swift-5.8-RELEASE-ubuntu20.04.tar.gz)
 
-COPY --from=adizbek/compiler-dotnet:7.0 /opt/dotnet7 /opt/dotnet7
+COPY --from=adizbek/compiler-dotnet:8.0 /opt/dotnet8 /opt/dotnet8
 
 # includes java 20, java-20-graal, java 11, java 8, kotlin 8
-COPY --from=adizbek/compiler-sdkman:1.1 /opt /opt
+COPY --from=adizbek/compiler-sdkman:1.2 /opt /opt
 
 # includes pypy 3.10, python 3.11, python 2.7, graalpy 23 (python 3.10)
-COPY --from=adizbek/compiler-python:1.0 /opt/pyenv/versions /opt/pyenv/versions
+COPY --from=adizbek/compiler-python:1.3 /opt/pyenv/versions /opt/pyenv/versions
 
-ENV DOTNET_ROOT /opt/dotnet7
+ENV DOTNET_ROOT /opt/dotnet8
 ENV GOROOT /usr/local/go
 ENV PATH $PATH:/opt/swift-5.8-RELEASE-ubuntu20.04/usr/bin:/opt/kotlin:$GOROOT/bin:$DOTNET_ROOT

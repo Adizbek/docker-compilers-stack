@@ -1,4 +1,4 @@
-FROM ubuntu:focal-20230801
+FROM ubuntu:focal-20240216
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && apt install -y libicu66 libssl-dev wget curl git  zip unzip build-essential libffi-dev libbz2-dev \
@@ -17,7 +17,7 @@ ENV PATH "$PYENV_ROOT/bin:$PATH"
 # includes pypy 3.10, python 3.11, python 2.7, graalpy 23 (python 3.10)
 
 RUN pyenv install pypy3.10
-RUN pyenv install 3.11
+RUN pyenv install 3.12
 RUN pyenv install 2.7.18
 RUN pyenv install graalpy-23.0.0
 
